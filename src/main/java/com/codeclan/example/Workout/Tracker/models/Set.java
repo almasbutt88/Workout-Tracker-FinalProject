@@ -24,12 +24,19 @@ public class Set {
     @JoinColumn(name = "exercise_id", referencedColumnName = "id")
     private Exercise exercise;
 
-    public Set(double weight, int rep, String comment, boolean completed,Exercise exercise) {
+    @ManyToOne
+    @JoinColumn(name = "workout_id", referencedColumnName = "id", nullable = true)
+    private Workout workout;
+
+
+
+    public Set(double weight, int rep, String comment, boolean completed,Exercise exercise, Workout workout) {
         this.weight = weight;
         this.rep = rep;
         this.comment = comment;
         this.completed = completed;
         this.exercise = exercise;
+        this.workout = workout;
     }
 
     public Set() {

@@ -22,13 +22,13 @@ public class Exercise {
     @OneToOne(mappedBy = "exercise")
     private Set set;
 
-    public Exercise(String name,Muscle muscleGroup){
+    public Exercise(String name,Muscle muscle){
         this.name = name;
-        this.muscle = muscleGroup;
+        this.muscle = muscle;
     }
 
 
-    public Exercise(){};
+    public Exercise(){}
 
     public String getName() {
         return name;
