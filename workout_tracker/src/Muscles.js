@@ -19,7 +19,7 @@ const Muscles = () =>{
     };
 
   const renderedMuscles = muscles.map((muscle) =>{
-      return <li key={muscle.id}> <Link to={`/exercises/${muscle.id}`}>{muscle.name}</Link> </li>    
+      return <li className = "musclesList"><button key={muscle.id}> <Link to={`/exercises/${muscle.id}`}>{muscle.name}</Link> </button> </li>    
   })
     
     //       const muscleClickHandler =(id)=>{ 
@@ -28,9 +28,9 @@ const Muscles = () =>{
     //       }
         
 return(
-    <div>
-    <h1>What muscle would you like to exercise?</h1>
-        <ul>      {renderedMuscles}
+    <div >
+    <h5 className = "muscleText">Choose a muscle...</h5>
+        <ul> {renderedMuscles}
     
         </ul>
     {/* <ul style={{ cursor: 'pointer' }}>> <p onClick={() => muscleClickHandler(muscle.id)}>{muscle.name}</p></ul> */}

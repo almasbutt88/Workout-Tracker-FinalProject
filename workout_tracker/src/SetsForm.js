@@ -1,16 +1,22 @@
-import { useState } from "react";
-import Exercises from "./Exercises";
-import displaySet from "./Workout";
-import exercisesElements from "./Exercises"
+import { useState,useEffect } from "react";
+import { useParams } from 'react-router-dom';
+import SetsDisplay from "./SetsDisplay";
+import { getAllSets } from "./MuscleService";
+import { getExerciseByID } from "./MuscleService";
 
 
-const SetsForm = ({displaySet, exercisesElements})=>{
+
+const SetsForm = ()=>{
+
+    const { exercise_id } = useParams();
+
 
     const [weight, setWeight] = useState(0);
     const [reps, setReps] = useState(0);
     const [comment, setComment] = useState("");
-
-    const [setData, setSetData] = useState({});
+    const [setsList, setSetsList] = useState([]);
+    const [exercise, setExercise] = useState("");
+    
 
     const increaseWeight = (e) => {
     e.preventDefault();
@@ -51,34 +57,58 @@ const SetsForm = ({displaySet, exercisesElements})=>{
         setComment(e.target.value)
     }
 
+
+    
       const handleClick =(e)=>{
           e.preventDefault();
           const setData = {
-              
-            reps: reps, 
+            exercise:exercise,
+            //workout:workout,
+            rep: reps, 
             weight: weight,
             comment: comment
           }
-          setSetData(setData);
-       }
+          console.log("SetDATA: " + setData);
+          fetch("http://localhost:8080/addset",{
+            method:"POST",
+            headers:{"Content-Type":"application/json"},
+            body:JSON.stringify(setData)
+        }).then(()=>{
+            getAllSets(exercise_id)
+             .then((setsList) => setSetsList(setsList))
+        })
+    }
+       useEffect(() => { 
+        getExerciseByID(exercise_id)
+        .then((exercise) => setExercise(exercise));
+
+           getAllSets(exercise_id)
+             .then((setsList) => setSetsList(setsList));
+       }, [])
+
+
+   
+    //    const testSet = setData.map((testitem) =>{
+    //     return <li key={testitem.id}>{testitem} </li>    
+    // })
      
     return(
         <>
         
         <form>
           <div className="weight">
-          Weight
+             Weight
           </div>
           <div className = "weightForm">
-          <button  onClick={decreaseWeight} type="number" className="btn btn-primary">-</button>
+            <button  onClick={decreaseWeight} type="number" className="btn btn-primary">-</button>
           <input onChange = {handleWeightChange}
-          type="number"
-          min="0"
-          step="1"
-          type="number"
-          id="weightid"
-          name="weightname"
-          value = {weight}/>
+            type="number"
+            min="0"
+            step="1"
+            type="number"
+            id="weightid"
+            name="weightname"
+            value = {weight}/>
         
           <button onClick={increaseWeight} type="number" className="btn btn-primary">+</button>
           
@@ -104,13 +134,11 @@ const SetsForm = ({displaySet, exercisesElements})=>{
          </div>
          </form>
          <hr></hr>
-         <p>Exercise Name</p>
-        <p>Weight: {setData.weight}</p>
-        <p>Reps: {setData.reps}</p>
-        <p>Comments: {setData.comment}</p>
+         <p></p>
+        <SetsDisplay exercise_id = {exercise_id} exercise={exercise} setsList={setsList}/>
         </>
     )
     
-    }
+}
 
 export default SetsForm;

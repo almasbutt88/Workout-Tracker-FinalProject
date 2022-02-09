@@ -3,21 +3,17 @@ import Home from "./Home";
 import SetsForm from "./SetsForm";
 
 const Workout = ()=>{
-const [displaySet, setDisplaySet] = useState([]);
+    const [setList, setSetList] = useState([])
 
-    return(
-<div>
+   
+  
 
-<Home/>
-
-<h1> Workout</h1>
-
-<h3>Workout Date</h3>
-
-<h3> Exercise Name </h3> 
-
-<SetsForm displaySet={displaySet}/>
-</div>
+    return (
+        <>
+            <h1>Sets List</h1>
+            <SetsForm/>
+            
+        </>
     )
 }
 

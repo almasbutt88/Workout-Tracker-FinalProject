@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+
 import './App.css';
 import Muscles from './Muscles';
 import React, {useEffect, useState} from 'react';
@@ -8,6 +8,8 @@ import Home from './Home';
 import Exercises from './Exercises';
 import History from './History';
 import SetsForm from './SetsForm';
+import Workout from './Workout';
+import SetsDisplay from './SetsDisplay';
 import {BrowserRouter as Router,Routes,Route,Link} from "react-router-dom";
 
 
@@ -41,8 +43,10 @@ function App() {
       <Route path ="/history" element = {<History/>}/>
       <Route path ="/muscles" element = {<Muscles/>}/>
       <Route path = "/exercises/:id" element = {<Exercises/>}/>
-      <Route path = "/setsform" element = {<SetsForm/>}/>
-  
+      <Route path = "/setsform/:exercise_id" element = {<SetsForm/>}/>
+      <Route path = "/workout" element = {<Workout/>}/>
+      <Route path = "/setsdisplay" element = {<SetsDisplay/>}/>
+      
      </Routes>
      </Router>
     </div>

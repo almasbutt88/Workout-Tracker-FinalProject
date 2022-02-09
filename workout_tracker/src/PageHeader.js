@@ -1,14 +1,18 @@
 import { Link } from "react-router-dom"
 
+
 const PageHeader = () => {
     return (
     <header>
       
+
+     
         <div id="main-header" className="flex-row">
-            <h1> Your Workout-Tracker</h1>
-            <div id="page-logo"><Link to = '/'>Home</Link></div>
+            <h1 className="gymbuddy"> Gym Buddy</h1>
+            <div className="page-logo"><Link to = '/'>Home</Link></div>
+            <Link to = '/muscles'> Choose a Muscle </Link>
          
-            <nav id="nav-bar">Nav bar</nav>
+            {/* <img src="./gymBuddyLogo" alt="Gym Buddy"/> */}
         </div>
     </header>
     )
