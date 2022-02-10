@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 
 const Muscles = () =>{
-    const [exercisesList, setExercisesList] = useState([])
+    
     const [muscles, setMuscles] = useState([]);
 
     useEffect(() =>{
@@ -29,7 +29,7 @@ const Muscles = () =>{
         
 return(
     <div >
-    <h5 className = "muscleText">Choose a muscle...</h5>
+    <h5 className = "chooseMuscle">Choose a muscle...</h5>
         <ul> {renderedMuscles}
     
         </ul>

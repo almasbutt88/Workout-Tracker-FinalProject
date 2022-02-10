@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom"
+import Timer from "./Timer"
 
 
 const PageHeader = () => {
@@ -11,7 +12,7 @@ const PageHeader = () => {
             <h1 className="gymbuddy"> Gym Buddy</h1>
             <div className="page-logo"><Link to = '/'>Home</Link></div>
             <Link to = '/muscles'> Choose a Muscle </Link>
-         
+         <Timer/>
             {/* <img src="./gymBuddyLogo" alt="Gym Buddy"/> */}
         </div>
     </header>

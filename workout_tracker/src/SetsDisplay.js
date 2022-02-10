@@ -3,17 +3,22 @@ import { useParams } from 'react-router-dom';
 import { getAllSets } from "./MuscleService";
 import { Link } from "react-router-dom";
 import Set from "./Set"
+import { removeSetByID } from "./MuscleService";
+
 
     
-const SetsDisplay = ({ exercise, setsList}) =>{
+const SetsDisplay = ({setsList, deleteSet}) =>{
+
 
 
     const setsElements = setsList.map( (set) => {
-        return <Set set={set} exerciseName={exercise.name}/>
+        return <Set set={set} exerciseName={set.exercise.name} deleteSet={deleteSet}/>
     })
 
-    return(  
 
+   
+    return(  
+        <div>
         <table>
             <tr>
                 <th scope="col">Exercise</th>
@@ -23,6 +28,9 @@ const SetsDisplay = ({ exercise, setsList}) =>{
             </tr>
             {setsElements}
         </table>
+        
+        
+        </div>
     )
 }
 

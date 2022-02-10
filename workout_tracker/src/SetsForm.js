@@ -87,6 +87,25 @@ const SetsForm = ()=>{
        }, [])
 
 
+    const deleteSet = (id) => {
+
+        fetch(`http://localhost:8080/sets/${id}`, 
+        {
+            method:'DELETE'
+        }).then((result) => {
+            const newSetsList = [...setsList];
+            setsList.splice(id, 1)
+            setSetsList(newSetsList)
+           
+
+
+
+            // splice out the set with set.id = id
+            // call setSetsList with the newSetsList
+        })
+
+    }
+
    
     //    const testSet = setData.map((testitem) =>{
     //     return <li key={testitem.id}>{testitem} </li>    
@@ -135,7 +154,8 @@ const SetsForm = ()=>{
          </form>
          <hr></hr>
          <p></p>
-        <SetsDisplay exercise_id = {exercise_id} exercise={exercise} setsList={setsList}/>
+        <SetsDisplay exercise_id = {exercise_id} exercise={exercise} setsList={setsList} deleteSet={deleteSet}/>
+    
         </>
     )
     

@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import { useParams } from 'react-router-dom';
 import { getExerciseByMuscleID } from "./MuscleService";
-import { Link } from "react-router-dom";
-    
+import { Link } from "react-router-dom";    
 const Exercises = () =>{
     const { id } = useParams();
+
     const [exercisesList, setExercisesList] = useState([]);
 
     useEffect(() => { 
@@ -18,6 +18,7 @@ const Exercises = () =>{
     return(  
         <ul>
             {exercisesElements}
+           
         </ul>
     )
 }
