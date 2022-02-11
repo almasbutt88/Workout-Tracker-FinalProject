@@ -147,7 +147,9 @@ const SetsForm = ()=>{
           value = {reps}/>
           <button onClick={increaseReps} type="number" className="btn btn-primary">+</button>
           </div>
-         <textarea onChange = {handleCommentChange} className = "comments" type = "string" placeholder="Comments..." ></textarea>
+          <div className = "comments">
+         <textarea onChange = {handleCommentChange}  type = "string" placeholder="Comments..." ></textarea>
+         </div>
          <div className = "submitButton">
          <button className = "saveSet" onClick = {handleClick} type = 'submit' value = 'submit'>Save Set</button>
          </div>

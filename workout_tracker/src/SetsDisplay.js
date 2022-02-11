@@ -25,6 +25,7 @@ const SetsDisplay = ({setsList, deleteSet}) =>{
                 <th scope="col">Weight</th>
                 <th scope="col">Reps</th>
                 <th scope="col">Comment</th>
+                <th scope="col">Delete</th>
             </tr>
             {setsElements}
         </table>

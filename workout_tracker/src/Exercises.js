@@ -12,11 +12,11 @@ const Exercises = () =>{
           .then((exercisesList) => setExercisesList(exercisesList));
     }, [])
     const exercisesElements = exercisesList.map( (exercise) => {
-     return <li key={exercise.id}><Link to={'/setsform/' + exercise.id}>{exercise.name}</Link></li>
+     return <li className="musclesList" key={exercise.id}><Link style={{ textDecoration: 'none', color: 'white' }} to={'/setsform/' + exercise.id}>{exercise.name}</Link></li>
     })
 
     return(  
-        <ul>
+        <ul className="exercisesList">
             {exercisesElements}
            
         </ul>
